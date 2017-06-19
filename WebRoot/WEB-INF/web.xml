@@ -33,6 +33,11 @@
     <servlet-name>RoleServlet</servlet-name>
     <servlet-class>action.roleAction.RoleServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ParkzServlet</servlet-name>
+    <servlet-class>action.parkAction.ParkzServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -68,5 +73,9 @@
   <servlet-mapping>
     <servlet-name>RoleServlet</servlet-name>
     <url-pattern>/servlet/RoleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ParkzServlet</servlet-name>
+    <url-pattern>/servlet/ParkzServlet</url-pattern>
   </servlet-mapping>
 </web-app>
