@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>group_project</display-name>
+  <servlet>
+    <servlet-name>StaffServlet</servlet-name>
+    <servlet-class>action.staffAction.StaffServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TrainServlet</servlet-name>
+    <servlet-class>action.trainAction.TrainServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>StaffApplyServlet</servlet-name>
+    <servlet-class>action.staffAction.StaffApplyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TranApplyServlet</servlet-name>
+    <servlet-class>action.trainAction.TranApplyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PermissionServlet</servlet-name>
+    <servlet-class>action.PermissionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModuleServlet</servlet-name>
+    <servlet-class>action.moduleAction.ModuleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OperatorServlet</servlet-name>
+    <servlet-class>action.operatorAction.OperatorServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RoleServlet</servlet-name>
+    <servlet-class>action.roleAction.RoleServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>StaffServlet</servlet-name>
+    <url-pattern>/servlet/StaffServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TrainServlet</servlet-name>
+    <url-pattern>/servlet/TrainServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StaffApplyServlet</servlet-name>
+    <url-pattern>/servlet/StaffApplyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TranApplyServlet</servlet-name>
+    <url-pattern>/servlet/TranApplyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PermissionServlet</servlet-name>
+    <url-pattern>/servlet/PermissionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ModuleServlet</servlet-name>
+    <url-pattern>/servlet/ModuleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OperatorServlet</servlet-name>
+    <url-pattern>/servlet/OperatorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoleServlet</servlet-name>
+    <url-pattern>/servlet/RoleServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
