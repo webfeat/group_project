@@ -37,7 +37,6 @@
 				$('.navbar-side').animate({left: '0px'});
 				$(this).removeClass('closed');
 				$('#page-wrapper').animate({'margin-left' : '260px'});
-				
 			}
 			else{
 			    $(this).addClass('closed');
@@ -45,6 +44,11 @@
 				$('#page-wrapper').animate({'margin-left' : '0px'}); 
 			}
 		});
+		
+		$.get("/group_project/yara/view/homepage/Manager.html",{},function(html){
+			$("#content").append(html);
+		});
     });
+    
 
 }(jQuery));
