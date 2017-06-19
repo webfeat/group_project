@@ -16,7 +16,11 @@ public class Operator  implements java.io.Serializable {
 
     // Fields    
 
-     private Integer operatorid;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer operatorid;
      private String loginname;
      private String password;
      private Integer empid;

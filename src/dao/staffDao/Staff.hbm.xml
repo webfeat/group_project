@@ -25,9 +25,6 @@
         <property name="departureTime" type="java.util.Date">
             <column name="DEPARTURE_TIME" length="7" />
         </property>
-        
-         <one-to-one class="dao.applyDao.Staffapply" name="staffapply"></one-to-one>
-         <one-to-one class="dao.operatorDao.Operator" name="operator"></one-to-one>
          <one-to-one class="dao.trainDao.Train" name="train"></one-to-one>
     </class>
 </hibernate-mapping>

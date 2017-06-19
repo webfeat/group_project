@@ -1,24 +1,23 @@
 package dao.moduleDao;
 
-import database.BaseHibernateDAO;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 
-/**
- * A data access object (DAO) providing persistence and search support for
- * Module entities. Transaction control of the save(), update() and delete()
- * operations can directly support Spring container-managed transactions or they
- * can be augmented to handle user-managed Spring transactions. Each of these
- * methods provides additional information for how to configure it for the
- * desired type of transaction control.
- * 
- * @see dao.moduleDao.Module
- * @author MyEclipse Persistence Tools
- */
+import dao.operatorDao.Operator;
+import dao.operatorDao.OperatorDAO;
+import dao.permissionDao.Permission;
+import dao.permissionDao.PermissionDAO;
+import dao.roleDao.Role;
+import dao.roleDao.RoleDAO;
+import database.BaseHibernateDAO;
+
 public class ModuleDAO extends BaseHibernateDAO {
 	private static final Log log = LogFactory.getLog(ModuleDAO.class);
 	// property constants
@@ -26,7 +25,10 @@ public class ModuleDAO extends BaseHibernateDAO {
 	public static final String SUPMODULEID = "supmoduleid";
 	public static final String SUBMODELID = "submodelid";
 	public static final String METHODNAME = "methodname";
-
+	private OperatorDAO operatorDAO = new OperatorDAO();
+	private RoleDAO roleDAO = new RoleDAO();
+	private PermissionDAO permissionDAO = new PermissionDAO();
+	
 	public void save(Module transientInstance) {
 		log.debug("saving Module instance");
 		try {
@@ -151,4 +153,30 @@ public class ModuleDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
+	//根据人员查询人员模块
+	public Set findMenuModule(String staffId){
+		log.debug("findMenuModule");
+		try {
+			Set<Permission> permissions = new HashSet();
+			
+			Operator operator = (Operator) operatorDAO.findByProperty("staffid", staffId);			
+			Set<Role> roles = operator.getRoles();
+			for(Role role :roles){
+				Set pms = role.getPermissions();
+				permissions.addAll(pms);
+			}
+			
+			Set<Module> modules = new HashSet<Module>();
+			for(Permission permission : permissions){
+				modules.addAll(permission.getModules());
+			}
+			
+			return modules;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 }

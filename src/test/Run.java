@@ -1,10 +1,13 @@
 package test;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import dao.moduleDao.ModuleDAO;
 import dao.staffDao.Staff;
 import dao.trainDao.Train;
 import dao.trainDao.TrainDAO;
@@ -14,7 +17,8 @@ public class Run {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		test("23");
+		ModuleDAO m = new ModuleDAO();
+		Set list = m.findMenuModule("1");
 	}
 
 	public static void test(String trainid) {
@@ -39,7 +43,7 @@ public class Run {
 		// session.save(operator);
 		// session.save(role);
 		// transaction.commit();
-		// session.close();//ÓÃÓÚ²âÊÔ²Ù×÷Ô±ºÍ½ÇÉ«Ö®¼äµÄ¹ØÏµ
+		// session.close();//ï¿½ï¿½ï¿½Ú²ï¿½ï¿½Ô²ï¿½ï¿½ï¿½Ô±ï¿½Í½ï¿½É«Ö®ï¿½ï¿½Ä¹ï¿½Ïµ
 
 		// Session session = HibernateSessionFactory.getSession();
 		// Transaction transaction = session.beginTransaction();
@@ -61,7 +65,7 @@ public class Run {
 		// session.save(role);
 		// session.save(permission);
 		// transaction.commit();
-		// session.close();//ÓÃÓÚ²âÊÔÈ¨ÏÞºÍ½ÇÉ«Ö®¼äµÄ¹ØÏµ
+		// session.close();//ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½È¨ï¿½ÞºÍ½ï¿½É«Ö®ï¿½ï¿½Ä¹ï¿½Ïµ
 
 //		Session session = HibernateSessionFactory.getSession();
 //		Transaction transaction = session.beginTransaction();
@@ -82,12 +86,12 @@ public class Run {
 //		session.save(module);
 //		session.save(permission);
 //		transaction.commit();
-//		session.close();//ÓÃÓÚ²âÊÔÈ¨ÏÞºÍÄ£¿éÖ®¼äµÄ¹ØÏµ£»
+//		session.close();//ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½È¨ï¿½Þºï¿½Ä£ï¿½ï¿½Ö®ï¿½ï¿½Ä¹ï¿½Ïµï¿½ï¿½
 		
 		
 //		Session session = HibernateSessionFactory.getSession();
 //		Transaction transaction = session.beginTransaction();
-        //ÓÃ»§  
+        //ï¿½Ã»ï¿½  
 //		Staff staff = new Staff();
 //		staff.setStaffid(3);
 //		staff.setStaffname("Mary");
@@ -107,7 +111,7 @@ public class Run {
 //		staffapply.setStaffapplyid(1234);
 //		session.save(staffapply);
 //		session.getTransaction().commit();  
-//        session.close(); //ÈËÔ±Ìá½»ÉêÇë±í£¬µÈ´ýÉóºË 
+//        session.close(); //ï¿½ï¿½Ô±ï¿½á½»ï¿½ï¿½ï¿½ï¿½?ï¿½È´ï¿½ï¿½ï¿½ï¿½ 
 
 //		Session session = HibernateSessionFactory.getSession();
 //		Transaction transaction = session.beginTransaction();
@@ -128,7 +132,7 @@ public class Run {
 //		session.save(operator);
 //		session.getTransaction().commit();  
 //		session.close();
-//		//²âÊÔÈËÔ±ºÍ²Ù×÷Ô±Ö®¼äµÄ¹ØÏµ
+//		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Í²ï¿½ï¿½ï¿½Ô±Ö®ï¿½ï¿½Ä¹ï¿½Ïµ
 		
 //		Session session = HibernateSessionFactory.getSession();
 //		Transaction transaction = session.beginTransaction();
@@ -137,11 +141,11 @@ public class Run {
 //		
 //		Train train = new Train();
 //		train.setTrainid(23);
-//		train.setTrainname("ÖØÇìÀí¹¤´óÑ§");
+//		train.setTrainname("ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½Ñ§");
 //		train.setCheckInTime(new Date());
 //		train.setDepartureTime(new Date());
 //		train.setManageid(7);
-//		train.setManagename("ÕÅÈý");
+//		train.setManagename("ï¿½ï¿½ï¿½ï¿½");
 //		train.setManagephone("123456");
 //		
 //		ParkDAO parkdao = new ParkDAO();
@@ -151,7 +155,7 @@ public class Run {
 //	
 //		session.save(train);
 //		transaction.commit();  
-//		session.close();//²âÊÔÔ°ÇøºÍÅàÑµ»ú¹¹µÄ¹ØÏµ
+//		session.close();//ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½Ä¹ï¿½Ïµ
 		
 		Session session = HibernateSessionFactory.getSession();
 		Transaction transaction = session.beginTransaction();

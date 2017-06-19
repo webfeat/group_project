@@ -13,13 +13,12 @@ public class Role implements java.io.Serializable {
 
 	private Integer roleid;
 	private String rolename;
-	private Set operators = new HashSet();
-	//½¨Á¢ÁÐ±í£¬´æ´¢²Ù×÷Ô±µÄ¼¯ºÏ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð±?ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ä¼ï¿½ï¿½ï¿½
 	// Constructors
 	
 	
 	private Set permissions = new HashSet();
-	//½¨Á¢ÁÐ±í£¬´æ´¢½ÇÉ«ËùÓµÓÐµÄÈ¨ÏÞ¼¯ºÏ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð±?ï¿½æ´¢ï¿½ï¿½É«ï¿½ï¿½Óµï¿½Ðµï¿½È¨ï¿½Þ¼ï¿½ï¿½ï¿½
 	
 
 	public Set getPermissions() {
@@ -34,14 +33,6 @@ public class Role implements java.io.Serializable {
 	public Role() {
 	}
 
-	public Set getOperators() {
-		return operators;
-	}
-
-	public void setOperators(Set operators) {
-		this.operators = operators;
-	}
-
 	/** minimal constructor */
 	public Role(Integer roleid) {
 		this.roleid = roleid;
@@ -52,8 +43,6 @@ public class Role implements java.io.Serializable {
 		this.roleid = roleid;
 		this.rolename = rolename;
 	}
-
-	// Property accessors
 
 	public Integer getRoleid() {
 		return this.roleid;

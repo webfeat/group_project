@@ -29,10 +29,5 @@
             <column name="MANAGEPHONE" length="11" />
         </property>
         <many-to-one class="dao.parkDao.Park" unique="true" name="park" column="parkid" cascade="save-update"></many-to-one>
-        <set name="staffs" cascade="all" inverse="true">
-        <key column="trainid"></key>
-        <one-to-many class="dao.staffDao.Staff"/>
-        </set>
-        
     </class>
 </hibernate-mapping>

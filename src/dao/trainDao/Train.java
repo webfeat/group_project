@@ -24,8 +24,6 @@ public class Train implements java.io.Serializable {
 	private Integer parkid;
 
 	private Park park;
-	private Trainapply trainapply;
-	private Set staffs;
 	// Constructors
 
 	/** default constructor */
@@ -59,22 +57,6 @@ public class Train implements java.io.Serializable {
 	
 	
 	
-	// Property accessors
-	public Set getStaffs() {
-		return staffs;
-	}
-
-	public void setStaffs(Set staffs) {
-		this.staffs = staffs;
-	}
-	
-	public Trainapply getTrainapply() {
-		return trainapply;
-	}
-
-	public void setTrainapply(Trainapply trainapply) {
-		this.trainapply = trainapply;
-	}
 
 	public Park getPark() {
 		return park;
