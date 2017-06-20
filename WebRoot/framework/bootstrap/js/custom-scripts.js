@@ -45,9 +45,20 @@
 			}
 		});
 		
-		$.get("/group_project/yara/view/homepage/Manager.html",{},function(html){
-			$("#content").append(html);
+		$.get("/group_project/yara/view/homepage/demo.html",{},function(html){
+			$("#page-wrapper").append(html);
 		});
+		
+		let app = $('#nav');
+		// 给容器添加事件监听器
+		app.click(function(e) {
+		  if (e.target && e.target.nodeName === 'A') {
+			  if(e.target.className == '' ){
+				  
+			  }
+		    }
+		});
+		
     });
     
 
