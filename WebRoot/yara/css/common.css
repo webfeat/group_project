@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+.polt{
+	position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+span[class="glyphicon glyphicon-bookmark"]{
+	float:right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+
+
