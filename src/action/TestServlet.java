@@ -19,8 +19,6 @@ public class TestServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException { // TODO Auto-generated method stub
-	    boolean str =  (Boolean) request.getAttribute("allow");
-		System.out.println(request.getSession().getAttribute("loginUser"));
 	    String jsondata = "{\"page\":\"1\"," +
 	            "      \"total\":2," +
 	            "      \"records\":\"13\"," +

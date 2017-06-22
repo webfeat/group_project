@@ -6,6 +6,10 @@
     <servlet-class>action.staffAction.StaffServlet</servlet-class>
   </servlet>
   <servlet>
+  	<servlet-name>TestServlet</servlet-name>
+  	<servlet-class>action.TestServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>TrainServlet</servlet-name>
     <servlet-class>action.trainAction.TrainServlet</servlet-class>
   </servlet>
@@ -37,14 +41,43 @@
     <servlet-name>ParkzServlet</servlet-name>
     <servlet-class>action.parkAction.ParkzServlet</servlet-class>
   </servlet>
-
-
-
-
-
+  <servlet>
+    <servlet-name>TableServlet</servlet-name>
+    <servlet-class>action.TableServlet</servlet-class>
+  </servlet>
+ <servlet>
+    <servlet-name>LoginAction</servlet-name>
+    <servlet-class>action.LoginAction</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>RegistsStaffServlet</servlet-name>
+    <servlet-class>action.RegistsStaffServlet</servlet-class>
+  </servlet>
+  
+  <filter>
+    <filter-name>FilterServlet</filter-name>
+    <filter-class>action.FilterServlet</filter-class>
+    <init-param>
+    	<param-name>encoding</param-name>  
+         <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterServlet</filter-name>
+    <url-pattern>*</url-pattern>
+  </filter-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>RegistsStaffServlet</servlet-name>
+    <url-pattern>/temp/RegistsStaffServlet</url-pattern>
+  </servlet-mapping>
+<servlet-mapping>
+    <servlet-name>LoginAction</servlet-name>
+    <url-pattern>/temp/LoginAction</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>StaffServlet</servlet-name>
-    <url-pattern>/servlet/StaffServlet</url-pattern>
+    <url-pattern>/temp/StaffServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>TrainServlet</servlet-name>
@@ -52,7 +85,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>StaffApplyServlet</servlet-name>
-    <url-pattern>/servlet/StaffApplyServlet</url-pattern>
+    <url-pattern>/temp/StaffApplyServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>TranApplyServlet</servlet-name>
@@ -77,5 +110,13 @@
   <servlet-mapping>
     <servlet-name>ParkzServlet</servlet-name>
     <url-pattern>/servlet/ParkzServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/action/TestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TableServlet</servlet-name>
+    <url-pattern>/temp/TableServlet</url-pattern>
   </servlet-mapping>
 </web-app>

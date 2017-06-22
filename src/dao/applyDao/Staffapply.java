@@ -12,20 +12,22 @@ public class Staffapply implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer staffapplyid;
 	private Date applytime;
 	private String applicant;
 	private String applystate;
 	private String stafemail;
 	private String staffphone;
-	private String trainname;
-	private String password;
-	private String userName;
-	
+	private String trainname;   
+	private String username;
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -34,14 +36,8 @@ public class Staffapply implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
+	private String password;
+	//创建一个对象，存储员工提交的申请表想要加入的培训机构
 	public String getTrainname() {
 		return trainname;
 	}
@@ -50,7 +46,7 @@ public class Staffapply implements java.io.Serializable {
 		this.trainname = trainname;
 	}
 
-	private Staff staff;
+	private Staff staff;			//创建员工对象，用于将员工和申请表联系起来
 	// Constructors
 
 	public Staff getStaff() {

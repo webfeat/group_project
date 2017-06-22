@@ -10,7 +10,7 @@
             <column name="STAFFAPPLYID" precision="5" scale="0" />
             <generator class="assigned" />
         </id>
-        <property name="applytime" type="java.util.Date">
+        <property name="applytime" type="date">
             <column name="APPLYTIME" length="7" />
         </property>
         <property name="applicant" type="java.lang.String">
@@ -28,16 +28,14 @@
         <property name="trainname" type="java.lang.String">
             <column name="TRAINNAME" length="20" />
         </property>
-        <property name="trainname" type="java.lang.String">
-            <column name="TRAINNAME" length="20" />
-        </property>
-        <property name="userName" type="java.lang.String">
+        <property name="username" type="java.lang.String">
             <column name="USERNAME" length="20" />
         </property>
-         <property name="password" type="java.lang.String">
+        <property name="password" type="java.lang.String">
             <column name="PASSWORD" length="50" />
         </property>
+        
         <many-to-one class="dao.staffDao.Staff" unique="true" name="staff"  
-      column="staffid" cascade="save-update"></many-to-one> 
+      column="staffid" cascade="save-update"></many-to-one>  <!-- 员工和申请表之间的一对一关系--> 
     </class>
 </hibernate-mapping>

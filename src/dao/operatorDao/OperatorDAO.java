@@ -152,8 +152,8 @@ public class OperatorDAO extends BaseHibernateDAO {
 	
 	public List validatLoginUser(String userName,String password) {
 		try {
-			String queryString = "from operator as model where model.loginname = ? and model.password = ?";
-			Query queryObject = getSession().createQuery(queryString);
+			String queryString = "select * from operator  where loginname = ? and password = ?";
+			Query queryObject = getSession().createSQLQuery(queryString).addEntity(Operator.class);
 			queryObject.setParameter(0, userName);
 			queryObject.setParameter(1, password);
 			return queryObject.list();

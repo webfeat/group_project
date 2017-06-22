@@ -24,8 +24,6 @@
 		<mapping resource="dao/applyDao/Staffapply.hbm.xml" />
 		<mapping resource="dao/applyDao/Trainapply.hbm.xml" />
 		<mapping resource="dao/trainDao/Train.hbm.xml"/>
-
-
 	</session-factory>
 
 </hibernate-configuration>

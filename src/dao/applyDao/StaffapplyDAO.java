@@ -1,13 +1,14 @@
 package dao.applyDao;
 
-import database.BaseHibernateDAO;
-import java.util.Date;
 import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
+
+import database.BaseHibernateDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -31,7 +32,7 @@ public class StaffapplyDAO extends BaseHibernateDAO {
 	public void save(Staffapply transientInstance) {
 		log.debug("saving Staffapply instance");
 		try {
-			getSession().save(transientInstance);
+			getSession().saveOrUpdate(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);

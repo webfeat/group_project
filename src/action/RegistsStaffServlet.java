@@ -13,7 +13,7 @@ import service.StaffService;
 import service.StaffServiceBean.StaffServiceBean;
 
 //注册人员
-public class RegistServlet extends HttpServlet {
+public class RegistsStaffServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private StaffService staffService = new StaffServiceBean();

@@ -22,6 +22,25 @@ public class Staff implements java.io.Serializable {
 	private Date departureTime;
 	private Train train;
 	// Constructors
+	private Staffapply staffapply;//Ω®¡¢…Í«Î±Ì
+	
+	private Operator operator;
+	
+	public Operator getOperator() {
+		return operator;
+	}
+
+	public void setOperator(Operator operator) {
+		this.operator = operator;
+	}
+
+	public Staffapply getStaffapply() {
+		return staffapply;
+	}
+
+	public void setStaffapply(Staffapply staffapply) {
+		this.staffapply = staffapply;
+	}
 
 	/** default constructor */
 	public Staff() {

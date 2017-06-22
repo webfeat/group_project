@@ -15,6 +15,109 @@ span[class="glyphicon glyphicon-bookmark"]{
 	margin-bottom: 10px;
 }
 
+.back-grond{
+	background: url("/group_project/yara/assest/bg.jpg");
+    background-attachment: fixed;
+    background-size: 1349px 899.108px;
+    background-position: 50% -110.11px;
+}
+.login-body{
+	 height: 100%;
+    font-family: "Lato", "Serif";
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 28px;
+    color: #777;
+    background: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
 
+.staff-regist{
+	background-color: #F36A5A !important;
+	border: #F36A5A !important;
+}
 
+.staff-regist:hover{
+	background-color: #3e110b !important;
+	border: #F36A5A  2px solid !important;
+	color: #F36A5A !important;
+}
+.train-regist{
+	color: #F36A5A !important;
+	border: #F36A5A !important;
+}
 
+.train-regist:hover{
+	color: white !important;
+	border: white solid 2px !important;
+	background-color: #F36A5A !important;
+}
+
+@media screen and (max-width: 500px) {
+	.foot-items {      margin-top: 50px; }
+}
+
+@media screen and (max-width:800px) {
+	.discrept {      
+		display: none; 
+	}
+}
+
+#trainName{
+	color: gray;
+}
+
+.back-img{
+	height: 616px;
+}
+
+.train-foot{
+	margin-top: 10px;
+}
+
+.search-input{
+	
+}
+
+.right-offset{
+	margin-right: 2%;
+}
+
+.table-overflow{
+	overflow: hidden;
+}
+
+.page-code{
+	 display: inline-flex;
+    float: left;
+    width: 49px;
+    height: 34px;
+    border-left: none;
+    border-right: none;
+    padding: 2px 4px 2px 4px;
+}
+
+.lable{
+	padding-top: 10px;
+}
+
+.line{
+	border: solid 1px gray;
+    margin-bottom: 19px;
+    margin-top: 28px;
+}
+
+.short-item{
+	width: 31%;
+    color: white;
+    height: 100px;
+    background-color: #5bc0de;
+    display: inline-block;
+    padding-left: 5%;
+    padding-top: 5%;
+    font-size: 20px;
+	cursor: pointer;
+}

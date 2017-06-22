@@ -16,6 +16,7 @@
 		<link href="/group_project/framework/bootstrap/css/openSans.css" rel='stylesheet' type='text/css' />
 		<link rel="stylesheet" href="/group_project/framework/bootstrap/js/Lightweight-Chart/cssCharts.css">
 		<link rel="stylesheet" href="/group_project/yara/css/common.css">
+		<link rel="stylesheet" href="/group_project/framework/bootstrap/css/docs.css">
 	</head>
 
 	<body>
@@ -28,149 +29,65 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
                 	</button>
-					<a class="navbar-brand" href="index.html"><strong><i class="glyphicon glyphicon-plane"></i> 重理园区管理系统</strong></a>
+					<a class="navbar-brand" href="index.html"><strong><i class="glyphicon glyphicon-plane"></i> DDD3框架</strong></a>
 					<span id="sideNav" href="" style="display: block;">
 						<i class="glyphicon glyphicon-menu-right" style="font-size: 20px;"></i>
 					</span>
 				</div>
 				<ul class="nav navbar-top-links navbar-right">
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-							<i class="glyphicon glyphicon-log-out"></i> <i class="fa fa-caret-down"></i>
-						</a>
-						<ul class="dropdown-menu dropdown-messages">
-							<li>
-								<a href="#">
-									<div>
-										<strong>John Doe</strong>
-										<span class="pull-right text-muted">
-                                        <em>Today</em>
-                                    </span>
-									</div>
-									<div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="#">
-									<div>
-										<strong>John Smith</strong>
-										<span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-									</div>
-									<div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="#">
-									<div>
-										<strong>John Smith</strong>
-										<span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-									</div>
-									<div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a class="text-center" href="#">
-									<strong>Read All Messages</strong>
-									<i class="glyphicon glyphicon-log-out"></i>
-								</a>
-							</li>
-						</ul>
-						<!-- /.dropdown-messages -->
-					</li>
-					
-					<!-- /.dropdown -->
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-							<i class="glyphicon glyphicon-log-out"></i> <i class="fa fa-caret-down"></i>
-						</a>
-						<ul class="dropdown-menu dropdown-alerts">
-							<li>
-								<a href="#">
-									<div>
-										<i class="fa fa-comment fa-fw"></i> New Comment
-										<span class="pull-right text-muted small">4 min</span>
-									</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="#">
-									<div>
-										<i class="fa fa-twitter fa-fw"></i> 3 New Followers
-										<span class="pull-right text-muted small">12 min</span>
-									</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="#">
-									<div>
-										<i class="fa fa-envelope fa-fw"></i> Message Sent
-										<span class="pull-right text-muted small">4 min</span>
-									</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="#">
-									<div>
-										<i class="fa fa-tasks fa-fw"></i> New Task
-										<span class="pull-right text-muted small">4 min</span>
-									</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="#">
-									<div>
-										<i class="fa fa-upload fa-fw"></i> Server Rebooted
-										<span class="pull-right text-muted small">4 min</span>
-									</div>
-								</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a class="text-center" href="#">
-									<strong>See All Alerts</strong>
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</li>
-						</ul>
-						<!-- /.dropdown-alerts -->
-					</li>
-					
-				</ul>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" style="margin-right:40px;">
+                      <i class="glyphicon glyphicon-user"> 超级管理员 </i> <i class="glyphicon glyphicon-cog"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>个人信息</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>修改密码</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>退出登录</strong>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+               		 </li>
+                    </ul>
+                </li>
+            </ul>
 			</nav>
 			<!--/. NAV TOP  -->
 			<nav class="navbar-default navbar-side">
 				<div class="sidebar-collapse">
 					<ul class="nav" id="main-menu">
 						<li>
-							<a href="#"><i class="glyphicon glyphicon-bookmark" style="color: white;"></i> 我的信息<span class="glyphicon glyphicon-menu-right"></span></a>
+							<a href="#" type="parent"><i class="glyphicon glyphicon-bookmark" style="color: white;"></i> 我的信息<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
 							<ul class="nav nav-second-level">
-								<li>
+								<li module="personInfo">
 									<a href="#">基本信息</a>
 								</li>
-								<li>
-									<a href="#">我的权限</a>
-								</li>
-								<li>
+								<li module="trainInfo">
 									<a href="#">我的机构</a>
-								</li>
-								<li>
-									<a href="#">我的申请</a>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-sitemap"></i> 组织管理<span class="fa arrow"></span></a>
+							<a href="#" type="parent">
+							<i class="glyphicon glyphicon-list-alt"></i> 组织管理<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
 							<ul class="nav nav-second-level">
 								<li>
 									<a href="#">园区管理</a>
@@ -182,12 +99,13 @@
 									<a href="#">人员管理</a>
 								</li>
 								<li>
-									<a href="#">学员管理</a>
+									<a href="#"  state="/tables/mans.html">学员管理</a>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-sitemap"></i> 系统管理<span class="fa arrow"></span></a>
+							<a href="#" type="parent"><i class="glyphicon glyphicon-cog"></i>
+							 系统管理<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
 							<ul class="nav nav-second-level">
 								<li>
 									<a href="#">模块管理</a>
@@ -198,36 +116,19 @@
 								<li>
 									<a href="#">权限管理</a>
 								</li>
-								<li>
-									<a href="#">功能点管理</a>
-								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-sitemap"></i> 申请管理<span class="fa arrow"></span></a>
+							<a href="#" type="parent"><i class="glyphicon glyphicon-tags"></i> 申请管理<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
 							<ul class="nav nav-second-level">
 								<li>
 									<a href="#">机构申请</a>
 								</li>
 								<li>
-									<a href="#">学员申请</a>
+									<a href="#" state="/tables/staffapplys.html">学员申请</a>
 								</li>
 								<li>
 									<a href="#">离园申请</a>
-								</li>
-								<li>
-									<a href="#">申请表管理<span class="fa arrow"></span></a>
-									<ul class="nav nav-third-level">
-										<li>
-											<a href="#">机构申请表</a>
-										</li>
-										<li>
-											<a href="#">学员申请表</a>
-										</li>
-										<li>
-											<a href="#">离园申请表</a>
-										</li>
-									</ul>
 								</li>
 							</ul>
 						</li>
@@ -235,7 +136,7 @@
 				</div>
 			</nav>
 				<div id="page-wrapper">
-					<div name=tabs>
+					<div id=tabs>
 						<ul class="nav nav-tabs">
 						  <li class="active">
 						    <a href="#">首页</a>
@@ -243,6 +144,8 @@
 						  <li><a href="#">系统管理</a></li>
 						  <li><a href="#">角色管理</a></li>
 						</ul>
+					</div>
+					<div id="content">
 					</div>
 				</div>
 			</div>
@@ -254,32 +157,17 @@
 				</p>
 			</footer>
 				</div>
-				<!-- /. PAGE INNER  -->
 			</div>
-			<!-- /. PAGE WRAPPER  -->
-		<!-- /. WRAPPER  -->
-		<!-- JS Scripts-->
-		<!-- jQuery Js -->
 		<script src="/group_project/framework/bootstrap/js/jquery-1.10.2.js"></script>
-		<!-- Bootstrap Js -->
 		<script src="/group_project/framework/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-
-		<!-- Metis Menu Js -->
 		<script src="/group_project/framework/bootstrap/js/jquery.metisMenu.js"></script>
-		<!-- Morris Chart Js -->
 		<script src="/group_project/framework/bootstrap/js/morris/raphael-2.1.0.min.js"></script>
 		<script src="/group_project/framework/bootstrap/js/morris/morris.js"></script>
-
 		<script src="/group_project/framework/bootstrap/js/easypiechart.js"></script>
 		<script src="/group_project/framework/bootstrap/js/easypiechart-data.js"></script>
-
 		<script src="/group_project/framework/bootstrap/js/Lightweight-Chart/jquery.chart.js"></script>
-
-		<!-- Custom Js -->
 		<script src="/group_project/framework/bootstrap/js/custom-scripts.js"></script>
-
-		<!-- Chart Js -->
 		<script type="text/javascript" src="/group_project/framework/bootstrap/js/Chart.min.js"></script>
+		<script type="text/javascript" src="/group_project/framework/echat/echarts.js"></script>
 	</body>
-
 </html>

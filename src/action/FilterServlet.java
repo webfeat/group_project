@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 
@@ -21,19 +22,41 @@ public class FilterServlet extends HttpServlet implements Filter{
 
 	private static final long serialVersionUID = 1L;
 
+
+    /** 
+     * The default character encoding to set for requests that pass through 
+     * this filter. 
+     */  
+    protected String encoding = null;  
+  
+  
+    /** 
+     * The filter configuration object we are associated with.  If this value 
+     * is null, this filter instance is not currently configured. 
+     */  
+    protected FilterConfig filterConfig = null;  
+  
+  
+    /** 
+     * Should a character encoding specified by the client be ignored? 
+     */  
+    protected boolean ignore = true;  
+	
 	//拦截器，请求拦截
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 		FilterChain chain) throws IOException, ServletException {
 	 	HttpServletRequest req = (HttpServletRequest)request;//获取请求
+	 	HttpServletResponse rep = (HttpServletResponse)response;
 		String getRequestURI = req.getRequestURI();//获取URI
 		String[] splis = getRequestURI.split("\\.");
 		String url = splis[splis.length-1];
-		
+		response.setCharacterEncoding("UTF-8");  
+	    response.setContentType("application/json; charset=utf-8");
 		//静态资源放过
-		if("html".equals(url) || "js".equals(url)||"css".equals(url) || "svg".equals(url) || "woff".equals(url) || "woff2".equals(url) || "ttf".equals("url")){
+		if("jpg".equals(url)||"png".equals(url)||"html".equals(url) || "js".equals(url)||"css".equals(url) || "svg".equals(url) || "woff".equals(url) || "woff2".equals(url) || "ttf".equals("url")){
 			req.setAttribute("allow", true);
-		}else if("LoginAction".equals(url)){
+		}else if(url != null && url.indexOf("LoginAction") > 0){
 			req.setAttribute("allow", true);
 		}else{
 			//如果是后台请求的话就直接不允许�?�?
@@ -46,7 +69,16 @@ public class FilterServlet extends HttpServlet implements Filter{
 		chain.doFilter(req, response);
 	}
 
+	//字符集设置
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {}
+	public void init(FilterConfig filterConfig) throws ServletException {
+		
+	}
+	
+	protected String selectEncoding() {  
+		  
+        return (this.encoding);  
+  
+    }  
 	
 }

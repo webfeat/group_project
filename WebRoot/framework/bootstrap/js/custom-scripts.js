@@ -7,7 +7,6 @@
 (function ($) {
     "use strict";
     var mainApp = {
-
         initFunction: function () {
             /*MENU 
             ------------------------------------*/
@@ -45,21 +44,35 @@
 			}
 		});
 		
-		$.get("/group_project/yara/view/homepage/demo.html",{},function(html){
-			$("#page-wrapper").append(html);
+		$.get("/group_project/yara/view/tables/staffapplys.html",{},function(html){
+			$("#content").append(html);
 		});
 		
-		let app = $('#nav');
+		let app = document.getElementById('main-menu');
 		// 给容器添加事件监听器
-		app.click(function(e) {
-		  if (e.target && e.target.nodeName === 'A') {
-			  if(e.target.className == '' ){
-				  
-			  }
-		    }
-		});
-		
+		app.addEventListener('click', function(e) {
+            if(e.target.attributes[1] && e.target.attributes[1].nodeValue == 'parent'){
+            	
+            }else if(e.target.attributes[1] && e.target.attributes[1].nodeValue.indexOf('html') > 0){
+            	$.get("/group_project/yara/view" + e.target.attributes[1].nodeValue,{},function(html){
+            		$("#content").empty();
+            		$("#content").append(html);
+        		});
+            }
+        }, false);
     });
     
-
+    var tab = function(tabName,state){
+    	var bean = {};
+    	bean['tabName'] = 1;
+    }
+    
+    window.gotoHtml = function(page,data){
+    	window.data = data;
+    	$.get(page,{},function(html){
+    		$("#content").empty();
+    		$("#content").append(html);
+		});
+    }
+    
 }(jQuery));

@@ -1,13 +1,19 @@
 package dao.staffDao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
+import util.ValidateUtil;
 import database.BaseHibernateDAO;
 
 public class StaffDAO extends BaseHibernateDAO {
@@ -140,5 +146,72 @@ public class StaffDAO extends BaseHibernateDAO {
 			log.error("attach failed", re);
 			throw re;
 		}
+	}
+	
+	//查询学员并且分页
+	public List findAllStudentLimit(Map<String,Object> params ){
+		try {
+			//获取参数
+			Integer curentPage = Integer.parseInt(params.get("curentPage").toString()) ;
+			Integer pageNumbers = Integer.parseInt(params.get("pageNumbers").toString());
+			String searchValue = (String) params.get("searchValue");
+			String searchKey = (String) params.get("searchKey");
+			String jumpPage = (String)params.get("jumpPage");
+			
+			String searchCondition = "";
+			int limitCondition = 0;
+			
+			if(jumpPage != null && ValidateUtil.isNumeric(jumpPage)){
+				limitCondition = Integer.parseInt("jumpPage") * pageNumbers;
+			}else{
+				limitCondition = curentPage * pageNumbers;
+			}
+			 
+			searchCondition = " and" + searchKey + " = '" + searchValue + "'";
+			String sql = " select * from student_view where 1=1 and trainName is not null ";
+			String limitStr = "" ;
+
+			if(limitCondition > 0){
+				limitStr += "and rid > " + (limitCondition - pageNumbers)  + " and rid <= "+ limitCondition;
+			}
+			
+			if(searchKey != null && !"".equals(searchKey.trim())){
+				sql += searchCondition;
+			}
+			
+			if(limitStr != null && !"".equals(limitStr)){
+				sql += limitStr;
+			}
+			List list = getSession().createSQLQuery(sql).list();
+			Map<String,Object> map = new HashMap<String, Object>();
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Staff updateStaff(Staff staff){
+		try {
+			Session session = getSession();
+			Transaction transaction = session.beginTransaction();
+			session.update(staff);
+			transaction.commit();
+			session.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return staff;
+	}
+	
+	//向数据库添加人
+	public Staff regitstStaff(Staff staff){
+		try {
+			getSession().save(staff);
+			return staff;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -32,7 +32,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="F:/oracleApplication/product/11.2.0/dbhome_1/jdbc/lib/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="/Test/WebRoot/WEB-INF/lib/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/samsung/Downloads/commons-codec-1.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/samsung/Downloads/json解析包/json解析包/fastjson-1.2.8.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
