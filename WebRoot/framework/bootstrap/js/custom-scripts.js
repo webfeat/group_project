@@ -44,7 +44,7 @@
 			}
 		});
 		
-		$.get("/group_project/yara/view/tables/staffapplys.html",{},function(html){
+		$.get("/group_project/yara/view/homepage/welcome_manager.html",{},function(html){
 			$("#content").append(html);
 		});
 		
@@ -74,5 +74,54 @@
     		$("#content").append(html);
 		});
     }
+    window.getLoginUer = function(){
+    	$.ajax({url:'/group_project/temp/LoginUserAction',
+			type:"post",
+			data:{},
+			dataType: "json",
+			async:true,
+			contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+			success:function(data){
+				$("#loginUser").text("  " + data.loginUser.staffname + "  ");
+				var loginUser =  JSON.stringify(data.loginUser);
+				localStorage.setItem("loginUser",loginUser);
+				localStorage.setItem("modules", data.modules);
+				$("#main-menu").append(data.modules);
+				$.get(data.modules,{},function(html){
+		    		$("#main-menu").empty();
+		    		$("#main-menu").append(html);
+				});
+			},
+			error:function(error){
+				alert("查询失败");
+			}
+    	});
+    }
+    window.getLoginUer();
     
+    window.loginOut = function(){
+    	$.ajax({url:'/group_project/temp/LoginOutServlet',
+			type:"post",
+			data:{},
+			dataType: "json",
+			async:true,
+			contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+			success:function(data){
+				self.location='/group_project/yara/loginForm.html';
+			},
+			error:function(error){
+				alert("查询失败");
+			}
+    	});
+    	}
+    	
+    	var inModules = function(content){
+    		var modules = localStorage.getItem("modules");
+    		if(modules == null){
+    			$("#main-menu").hide();
+    		}else{
+    			return modules.indexOf(content);
+    		}
+    	}
+    	
 }(jQuery));

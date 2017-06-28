@@ -8,7 +8,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
@@ -166,7 +165,7 @@ public class StaffDAO extends BaseHibernateDAO {
 			}else{
 				limitCondition = curentPage * pageNumbers;
 			}
-			 
+			
 			searchCondition = " and" + searchKey + " = '" + searchValue + "'";
 			String sql = " select * from student_view where 1=1 and trainName is not null ";
 			String limitStr = "" ;

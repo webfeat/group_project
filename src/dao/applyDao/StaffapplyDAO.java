@@ -1,14 +1,17 @@
 package dao.applyDao;
 
+import database.BaseHibernateDAO;
+
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
-
-import database.BaseHibernateDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -28,11 +31,19 @@ public class StaffapplyDAO extends BaseHibernateDAO {
 	public static final String APPLYSTATE = "applystate";
 	public static final String STAFEMAIL = "stafemail";
 	public static final String STAFFPHONE = "staffphone";
+	public static final String TRAINNAME = "trainname";
+	public static final String STAFFID = "staffid";
+	public static final String USERNAME = "username";
+	public static final String PASSWORD = "password";
 
 	public void save(Staffapply transientInstance) {
 		log.debug("saving Staffapply instance");
 		try {
+			Transaction transaction = getSession().beginTransaction();
+			transaction.begin();
 			getSession().saveOrUpdate(transientInstance);
+			transaction.commit();
+			getSession().close();
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -61,6 +72,23 @@ public class StaffapplyDAO extends BaseHibernateDAO {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public Integer generateEntityId(){
+		try {
+			String sql = "select max(staffapplyid) from Staffapply";
+			SQLQuery sqlQuery = getSession().createSQLQuery(sql);
+			List res = sqlQuery.list();
+			int a = 0;
+			for(int i=0;i < res.size();i++){
+				a = Integer.parseInt(res.get(i).toString()) ;
+			}
+			return a+1;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+		
 	}
 
 	public List findByExample(Staffapply instance) {
@@ -107,6 +135,22 @@ public class StaffapplyDAO extends BaseHibernateDAO {
 
 	public List findByStaffphone(Object staffphone) {
 		return findByProperty(STAFFPHONE, staffphone);
+	}
+
+	public List findByTrainname(Object trainname) {
+		return findByProperty(TRAINNAME, trainname);
+	}
+
+	public List findByStaffid(Object staffid) {
+		return findByProperty(STAFFID, staffid);
+	}
+
+	public List findByUsername(Object username) {
+		return findByProperty(USERNAME, username);
+	}
+
+	public List findByPassword(Object password) {
+		return findByProperty(PASSWORD, password);
 	}
 
 	public List findAll() {

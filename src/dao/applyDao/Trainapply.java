@@ -2,8 +2,6 @@ package dao.applyDao;
 
 import java.util.Date;
 
-import dao.trainDao.Train;
-
 /**
  * Trainapply entity. @author MyEclipse Persistence Tools
  */
@@ -19,16 +17,17 @@ public class Trainapply implements java.io.Serializable {
 	private String trainname;
 	private String managename;
 	private String managephone;
-
-	private Train train;
+	private Long trainid;
+	private String loginname;
+	private String password;
 	// Constructors
-
-	public Train getTrain() {
-		return train;
+	private String email;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setTrain(Train train) {
-		this.train = train;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	/** default constructor */
@@ -43,7 +42,7 @@ public class Trainapply implements java.io.Serializable {
 	/** full constructor */
 	public Trainapply(Integer trainapplyid, Date applytime, String applicant,
 			String applystate, String trainname, String managename,
-			String managephone) {
+			String managephone, Long trainid,String loginname,String password) {
 		this.trainapplyid = trainapplyid;
 		this.applytime = applytime;
 		this.applicant = applicant;
@@ -51,12 +50,31 @@ public class Trainapply implements java.io.Serializable {
 		this.trainname = trainname;
 		this.managename = managename;
 		this.managephone = managephone;
+		this.trainid = trainid;
+		this.loginname = loginname;
+		this.password = password;
 	}
 
 	// Property accessors
 
 	public Integer getTrainapplyid() {
 		return this.trainapplyid;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getLoginname() {
+		return loginname;
+	}
+
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 
 	public void setTrainapplyid(Integer trainapplyid) {
@@ -109,6 +127,14 @@ public class Trainapply implements java.io.Serializable {
 
 	public void setManagephone(String managephone) {
 		this.managephone = managephone;
+	}
+
+	public Long getTrainid() {
+		return this.trainid;
+	}
+
+	public void setTrainid(Long trainid) {
+		this.trainid = trainid;
 	}
 
 }

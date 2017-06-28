@@ -8,30 +8,21 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.criterion.Example;
 
-/**
- * A data access object (DAO) providing persistence and search support for
- * Operator entities. Transaction control of the save(), update() and delete()
- * operations can directly support Spring container-managed transactions or they
- * can be augmented to handle user-managed Spring transactions. Each of these
- * methods provides additional information for how to configure it for the
- * desired type of transaction control.
- * 
- * @see dao.operatorDao.Operator
- * @author MyEclipse Persistence Tools
- */
 public class OperatorDAO extends BaseHibernateDAO {
 	private static final Log log = LogFactory.getLog(OperatorDAO.class);
 	// property constants
 	public static final String LOGINNAME = "loginname";
 	public static final String PASSWORD = "password";
 	public static final String EMPID = "empid";
+	public static final String STAFFID = "staffid";
 
 	public void save(Operator transientInstance) {
 		log.debug("saving Operator instance");
 		try {
-			getSession().save(transientInstance);
+			getSession().saveOrUpdate(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -61,6 +52,24 @@ public class OperatorDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
+	public Integer generateEntityId(){
+		try {
+			String sql = "select max(operatorid) from Operator";
+			SQLQuery sqlQuery = getSession().createSQLQuery(sql);
+			List res = sqlQuery.list();
+			int a = 0;
+			for(int i=0;i < res.size();i++){
+				a = Integer.parseInt(res.get(i).toString()) ;
+			}
+			return a+1;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+		
+	}
+
 
 	public List findByExample(Operator instance) {
 		log.debug("finding Operator instance by example");
@@ -102,6 +111,10 @@ public class OperatorDAO extends BaseHibernateDAO {
 
 	public List findByEmpid(Object empid) {
 		return findByProperty(EMPID, empid);
+	}
+
+	public List findByStaffid(Object staffid) {
+		return findByProperty(STAFFID, staffid);
 	}
 
 	public List findAll() {
@@ -149,7 +162,6 @@ public class OperatorDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-	
 	public List validatLoginUser(String userName,String password) {
 		try {
 			String queryString = "select * from operator  where loginname = ? and password = ?";

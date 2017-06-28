@@ -44,7 +44,7 @@ public class StaffServlet extends HttpServlet {
 			jsonObject = this.staffDeleteParams(req, resp);
 		}else if("table".equals(operate)){//表格数据查询
 			jsonObject = staffTableAllParams(req, resp);
-		}else if("edit".equals(operate)){
+		}else if("edit".equals(operate)){//编辑的时候查找一个人员
 			String staffid = (String)req.getParameter("staffId");
 			if(!"".equals(staffid)){
 				jsonObject = this.statfFindOneParams(req, resp);
@@ -78,10 +78,11 @@ public class StaffServlet extends HttpServlet {
 		map.put("starffId", starffId);
 		map.put("email", email);
 		map.put("phone", phone);
-		
+		//查询一次，为保证持久化层对象一致
 		Staff staff = this.staffService.findAStaff(starffId);
 		staff.setEmail(email);
 		staff.setPhone(phone);
+		//开始更新
 		Staff saveed = this.staffService.updateStaff(staff);
 		JSONObject jsonObject = new JSONObject();
 
@@ -114,6 +115,7 @@ public class StaffServlet extends HttpServlet {
 		String staffId = req.getParameter("staffId");
 		Staff staff = this.staffService.findAStaff(staffId);
 		Train train = null;
+		
 		if(staff.getTrainid() != null){
 			train = this.trainDAO.findById(Integer.parseInt(staff.getTrainid()));
 		}else if(staff.getTrain() != null){

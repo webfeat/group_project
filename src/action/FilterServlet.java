@@ -51,6 +51,7 @@ public class FilterServlet extends HttpServlet implements Filter{
 		String getRequestURI = req.getRequestURI();//获取URI
 		String[] splis = getRequestURI.split("\\.");
 		String url = splis[splis.length-1];
+		//设置字符集
 		response.setCharacterEncoding("UTF-8");  
 	    response.setContentType("application/json; charset=utf-8");
 		//静态资源放过
@@ -59,7 +60,7 @@ public class FilterServlet extends HttpServlet implements Filter{
 		}else if(url != null && url.indexOf("LoginAction") > 0){
 			req.setAttribute("allow", true);
 		}else{
-			//如果是后台请求的话就直接不允许�?�?
+			//如果是后台请求，并且发现未登录的话就直接不允许，
 			if(req.getSession() != null && req.getSession().getAttribute("loginUser") != null){
 				req.setAttribute("allow", true);
 			}else{
@@ -69,7 +70,6 @@ public class FilterServlet extends HttpServlet implements Filter{
 		chain.doFilter(req, response);
 	}
 
-	//字符集设置
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		

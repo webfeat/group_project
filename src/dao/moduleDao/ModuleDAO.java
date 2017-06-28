@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.criterion.Example;
 
 import dao.operatorDao.Operator;
@@ -155,24 +156,13 @@ public class ModuleDAO extends BaseHibernateDAO {
 	}
 	
 	//根据人员查询人员模块
-	public Set findMenuModule(String staffId){
+	public List findMenuModule(String operatorId){
 		log.debug("findMenuModule");
 		try {
-			Set<Permission> permissions = new HashSet();
-			
-			Operator operator = (Operator) operatorDAO.findByProperty("staffid", staffId);			
-			Set<Role> roles = operator.getRoles();
-			for(Role role :roles){
-				Set pms = role.getPermissions();
-				permissions.addAll(pms);
-			}
-			
-			Set<Module> modules = new HashSet<Module>();
-			for(Permission permission : permissions){
-				modules.addAll(permission.getModules());
-			}
-			
-			return modules;
+			String sql = "select moduleName from module_view where operatorId = ?";
+			SQLQuery sqlQuery = getSession().createSQLQuery(sql);
+			sqlQuery.setParameter(0, operatorId);
+			return sqlQuery.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

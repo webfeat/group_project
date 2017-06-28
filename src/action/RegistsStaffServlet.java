@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import service.StaffService;
 import service.StaffServiceBean.StaffServiceBean;
 
-//注册人员
+//注册人员，提交申请
 public class RegistsStaffServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

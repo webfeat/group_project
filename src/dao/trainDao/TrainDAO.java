@@ -1,15 +1,21 @@
 package dao.trainDao;
 
+import dao.BaseDao;
+import database.BaseHibernateDAO;
+
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.criterion.Example;
 
-import database.BaseHibernateDAO;
+import util.ValidateUtil;
 
 /**
  * A data access object (DAO) providing persistence and search support for Train
@@ -30,11 +36,13 @@ public class TrainDAO extends BaseHibernateDAO {
 	public static final String MANAGENAME = "managename";
 	public static final String MANAGEPHONE = "managephone";
 	public static final String PARKID = "parkid";
+	public static final String USERNAME="username";
+	public static final String PASSWORD ="password";
 
 	public void save(Train transientInstance) {
 		log.debug("saving Train instance");
 		try {
-			getSession().save(transientInstance);
+			getSession().saveOrUpdate(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -63,6 +71,24 @@ public class TrainDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
+	public Integer generateEntityId(){
+		try {
+			String sql = "select max(trainid) from Train";
+			SQLQuery sqlQuery = getSession().createSQLQuery(sql);
+			List res = sqlQuery.list();
+			int a = 0;
+			for(int i=0;i < res.size();i++){
+				a = Integer.parseInt(res.get(i).toString()) ;
+			}
+			return a+1;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+		
+	}
+
 
 	public List findByExample(Train instance) {
 		log.debug("finding Train instance by example");
@@ -82,9 +108,9 @@ public class TrainDAO extends BaseHibernateDAO {
 		log.debug("finding Train instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Train as model where model."
+			String queryString = "select * from Train where "
 					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
+			Query queryObject = getSession().createSQLQuery(queryString).addEntity(Train.class);
 			queryObject.setParameter(0, value);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -158,4 +184,12 @@ public class TrainDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
+	public List findAllTrainLimit(Map<String,Object> params ){
+		BaseDao ba= new BaseDao();
+		List list=ba.findAllTrainLimit(params, "Train");
+		
+		return list;
+	}
+	
 }

@@ -1,10 +1,9 @@
 package dao.trainDao;
 
 import java.util.Date;
-import java.util.Set;
 
-import dao.applyDao.Trainapply;
 import dao.parkDao.Park;
+import dao.staffDao.Staff;
 
 /**
  * Train entity. @author MyEclipse Persistence Tools
@@ -22,9 +21,26 @@ public class Train implements java.io.Serializable {
 	private String managename;
 	private String managephone;
 	private Integer parkid;
-
+	private Staff staff;
+	
 	private Park park;
 	// Constructors
+
+	public Park getPark() {
+		return park;
+	}
+
+	public void setPark(Park park) {
+		this.park = park;
+	}
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
 
 	/** default constructor */
 	public Train() {
@@ -32,13 +48,12 @@ public class Train implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Train(Integer trainid, String trainname, Date checkInTime,
-			Integer manageid, String managename, Integer parkid) {
+			Integer manageid, String managename) {
 		this.trainid = trainid;
 		this.trainname = trainname;
 		this.checkInTime = checkInTime;
 		this.manageid = manageid;
 		this.managename = managename;
-		this.parkid = parkid;
 	}
 
 	/** full constructor */
@@ -54,17 +69,9 @@ public class Train implements java.io.Serializable {
 		this.managephone = managephone;
 		this.parkid = parkid;
 	}
-	
-	
-	
 
-	public Park getPark() {
-		return park;
-	}
+	// Property accessors
 
-	public void setPark(Park park) {
-		this.park = park;
-	}
 	public Integer getTrainid() {
 		return this.trainid;
 	}

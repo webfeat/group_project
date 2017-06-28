@@ -18,6 +18,8 @@ import service.staffApplyService.StaffApplyServiceBean;
 import com.alibaba.fastjson.JSONObject;
 
 import dao.BaseDao;
+import dao.applyDao.Staffapply;
+import dao.staffDao.Staff;
 
 public class StaffApplyServlet extends HttpServlet {
 
@@ -28,19 +30,32 @@ public class StaffApplyServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		String operate = req.getParameter("operate");
 		JSONObject jsonObject = new JSONObject();
-		addStaffApply(req, resp);
-		if("add".equals(operate)){//新增人员
+		//if-else判断
+		if("add".equals(operate)){//新增人员申请
 			jsonObject = addStaffApply(req, resp);
 			this.staffApplyService.saveAStaffApply(jsonObject);
-		}else if("deal".equals(operate)){
+		}else if("deal".equals(operate)){//处理申请
+			JSONObject temp = new JSONObject();
 			String commont = req.getParameter("comment");
-			jsonObject.put("comment", commont);
+			String staffApplyId = req.getParameter("staffApplyId");
+			temp.put("comment", commont);
+			temp.put("staffApplyId", staffApplyId);
+			Staffapply saved = this.staffApplyService.dealStaffApply(temp);
+			if(saved != null){
+				jsonObject.put("data", saved);
+				jsonObject.put("state", true);
+				jsonObject.put("message", "成功！");
+			}else{
+				jsonObject.put("state", true);
+				jsonObject.put("errorMessage", "失败");
+			}
 		}else if("table".equals(operate)){
 			jsonObject = this.staffApplyTable(req, resp);
 		}else if("find".equals(operate)){
-			
+			jsonObject = this.findOneStaffApply(req, resp);
 		}
 		resp.getWriter().write(jsonObject.toJSONString());
 	}
@@ -50,7 +65,7 @@ public class StaffApplyServlet extends HttpServlet {
 			throws ServletException, IOException {
 			doPost(req, resp);
 	}
-	
+
 	public JSONObject staffApplyTable(HttpServletRequest req, HttpServletResponse resp){
 		
 		String curentPage = req.getParameter("curentPage");
@@ -65,7 +80,7 @@ public class StaffApplyServlet extends HttpServlet {
 		map.put("searchValue", searchValue);
 		map.put("searchKey", searchKey);
 		map.put("jumpPage", jumpPage);
-		
+		map.put("initConditon", "applystate = '审批中' ");
 	    JSONObject jsonObject = new JSONObject();
 	    StaffService service = new StaffServiceBean();
     	List list =  BaseDao.findAllTrainLimit(map, "staffApply");
@@ -103,9 +118,16 @@ public class StaffApplyServlet extends HttpServlet {
 	
 	public JSONObject findOneStaffApply(HttpServletRequest req, HttpServletResponse resp){
 		String staffApplyid = req.getParameter("staffApplyId");
-		this.staffApplyService.
+		Staffapply staffApply = this.staffApplyService.findOneStaffApplyById(staffApplyid);
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("staffName", staffName);
+		if(staffApply != null){
+			jsonObject.put("data", staffApply);
+			jsonObject.put("state", true);
+			jsonObject.put("message", "查询成功");
+		}else{
+			jsonObject.put("errorMessage", "查询失败");
+			jsonObject.put("state", false);
+		}
 		return jsonObject;
 	}
 	

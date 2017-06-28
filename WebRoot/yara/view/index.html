@@ -29,7 +29,7 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
                 	</button>
-					<a class="navbar-brand" href="index.html"><strong><i class="glyphicon glyphicon-plane"></i> DDD3框架</strong></a>
+					<a class="navbar-brand" href="#"><strong><i class="glyphicon glyphicon-plane"></i> 园区管理系统</strong></a>
 					<span id="sideNav" href="" style="display: block;">
 						<i class="glyphicon glyphicon-menu-right" style="font-size: 20px;"></i>
 					</span>
@@ -37,11 +37,11 @@
 				<ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" style="margin-right:40px;">
-                      <i class="glyphicon glyphicon-user"> 超级管理员 </i> <i class="glyphicon glyphicon-cog"></i>
+                      <i class="glyphicon glyphicon-user" id="loginUser"> 超级管理员 </i> <i class="glyphicon glyphicon-cog"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
-                            <a href="#">
+                            <a href="#" onclick="gotoHtml('/group_project/yara/view/staffhtml/MyInfo.html')">
                                 <div>
                                     <strong>个人信息</strong>
                                 </div>
@@ -57,7 +57,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
+                            <a href="#" onclick="loginOut()">
                                 <div>
                                     <strong>退出登录</strong>
                                 </div>
@@ -75,30 +75,19 @@
 				<div class="sidebar-collapse">
 					<ul class="nav" id="main-menu">
 						<li>
-							<a href="#" type="parent"><i class="glyphicon glyphicon-bookmark" style="color: white;"></i> 我的信息<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
-							<ul class="nav nav-second-level">
-								<li module="personInfo">
-									<a href="#">基本信息</a>
-								</li>
-								<li module="trainInfo">
-									<a href="#">我的机构</a>
-								</li>
-							</ul>
-						</li>
-						<li>
 							<a href="#" type="parent">
 							<i class="glyphicon glyphicon-list-alt"></i> 组织管理<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
 							<ul class="nav nav-second-level">
-								<li>
+								<li class="showModule()" id="4">
 									<a href="#">园区管理</a>
 								</li>
-								<li>
-									<a href="#">机构管理</a>
+								<li id="5">
+									<a href="#" state="/tables/trains.html" >机构管理</a>
 								</li>
-								<li>
+								<li id="7">
 									<a href="#">人员管理</a>
 								</li>
-								<li>
+								<li id="6">
 									<a href="#"  state="/tables/mans.html">学员管理</a>
 								</li>
 							</ul>
@@ -107,27 +96,30 @@
 							<a href="#" type="parent"><i class="glyphicon glyphicon-cog"></i>
 							 系统管理<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
 							<ul class="nav nav-second-level">
-								<li>
+								<li id="8">
 									<a href="#">模块管理</a>
 								</li>
-								<li>
-									<a href="#">报表管理</a>
-								</li>
-								<li>
+								<li id="9">
 									<a href="#">权限管理</a>
+								</li>
+								<li id="10">
+									<a href="#">操作员管理</a>
+								</li>
+								<li id="11">
+									<a href="#">角色管理</a>
 								</li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" type="parent"><i class="glyphicon glyphicon-tags"></i> 申请管理<span class="glyphicon glyphicon-menu-right pull-right"></span></a>
 							<ul class="nav nav-second-level">
-								<li>
-									<a href="#">机构申请</a>
+								<li id="12">
+									<a href="#" state="/tables/trainsVerify.html">机构申请</a>
 								</li>
-								<li>
+								<li id="13">
 									<a href="#" state="/tables/staffapplys.html">学员申请</a>
 								</li>
-								<li>
+								<li id="">
 									<a href="#">离园申请</a>
 								</li>
 							</ul>
@@ -136,13 +128,11 @@
 				</div>
 			</nav>
 				<div id="page-wrapper">
-					<div id=tabs>
-						<ul class="nav nav-tabs">
+					<div>
+						<ul  id=tabs class="nav nav-tabs">
 						  <li class="active">
-						    <a href="#">首页</a>
+						    <a href="#" onclick="gotoHtml('/group_project/yara/view/homepage/welcome_manager.html')">首页</a>
 						  </li>
-						  <li><a href="#">系统管理</a></li>
-						  <li><a href="#">角色管理</a></li>
 						</ul>
 					</div>
 					<div id="content">
